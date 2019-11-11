@@ -11,38 +11,53 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
  *
- * @author Alyson
+ * @author Aluno
  */
-public class ControadorUsuario implements Initializable {
-
-    
-    @FXML
-    private Button botao;
+public class ControladorCadastroUsuario implements Initializable {
 
     @FXML
-    private Label txtLabel;
-    
-    @FXML
-    private TextField nome;
+    private TextField lblNome;
 
     @FXML
-    private void funcao(ActionEvent event){
-        System.out.println("oi");
-        txtLabel.setText("ola" + nome.getText());
+    private TextField lblLogin;
+
+    @FXML
+    private TextField lblEmail;
+
+    @FXML
+    private TextField lblFuncao;
+
+    @FXML
+    private TextField lblSenha;
+
+    @FXML
+    private Button btnCadastrar;
+
+    @FXML
+    private Button btnLimpar;
+
+    @FXML
+    private Pane pane;
+
+    @FXML
+    void cadastrarUsuario(ActionEvent event) {
+        System.exit(0);
     }
-    
 
-    
+    @FXML
+    void limpar(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

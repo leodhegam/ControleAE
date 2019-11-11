@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
+
 public class Principal extends Application {
 
 	
@@ -18,16 +19,19 @@ public class Principal extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/visao/Usuario.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/visao/Login.fxml"));
                 Scene scene = new Scene(root);
+                
 
                 //Ocupa a tela toda
-                stage.centerOnScreen();
-                stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-                stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+               // stage.centerOnScreen();
+               // stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
+               // stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
 
+                stage.setResizable(false);
+               
                 stage.setScene(scene);
-                stage.setTitle("Exemplo");
+                stage.setTitle("Login");
                 stage.show();
 	}
 

@@ -3,22 +3,22 @@ package modelo;
 public class Usuario {
 
     private int idUsuario, senha;
-    private String nome, email, funcacao, login;
+    private String nome, email, funcao, login;
 
-    public Usuario(int senha, String nome, String email, String funcacao, String login) {
+    public Usuario(int senha, String nome, String email, String funcao, String login) {
         this.senha = senha;
         this.nome = nome;
         this.email = email;
-        this.funcacao = funcacao;
+        this.funcao = funcao;
         this.login = login;
     }
 
-    public Usuario(int idUsuario, int senha, String nome, String email, String funcacao, String login) {
+    public Usuario(int idUsuario, int senha, String nome, String email, String funcao, String login) {
         this.idUsuario = idUsuario;
         this.senha = senha;
         this.nome = nome;
         this.email = email;
-        this.funcacao = funcacao;
+        this.funcao = funcao;
         this.login = login;
     }
 
@@ -62,12 +62,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getFuncacao() {
-        return funcacao;
+    public String getFuncao() {
+        return funcao;
     }
 
-    public void setFuncacao(String funcacao) {
-        this.funcacao = funcacao;
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
     }
 
     public String getLogin() {

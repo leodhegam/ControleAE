@@ -1,18 +1,16 @@
 package persistencia;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 import modelo.Usuario;
 
 public class UsuarioDAO {
 
     private final Conexao con = new Conexao();
-    private final String INSERTUSUARIO = "INSERT INTO USUARIO (NOME, EMAIL, FUNCACAO, USUARIO, SENHA ) VALUES (?,?,?,?,?)";
-    private final String UPDATEUSUARIO = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, FUNCACAO = ?, USUARIO = ?, SENHA = ?  WHERE ID_USUARIO = ?";
+    private final String INSERTUSUARIO = "INSERT INTO USUARIO (NOME, EMAIL, FUNCAO, USUARIO, SENHA ) VALUES (?,?,?,?,?)";
+    private final String UPDATEUSUARIO = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, FUNCAO = ?, USUARIO = ?, SENHA = ?  WHERE ID_USUARIO = ?";
     private final String DELETEUSUARIO = "DELETE FROM USUARIO WHERE ID_USUARIO = ?";
     private final String LISTUSUARIO = "SELECT * FROM USUARIO";
     private final String BUSCARUSUARIO = "SELECT * FROM USUARIO WHERE UPPER(NOME) LIKE ?";
@@ -28,7 +26,7 @@ public class UsuarioDAO {
             // OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
             preparaInstrucao.setString(1, u.getNome().toUpperCase());
             preparaInstrucao.setString(2, u.getEmail().toUpperCase());
-            preparaInstrucao.setString(3, u.getFuncacao().toUpperCase());
+            preparaInstrucao.setString(3, u.getFuncao().toUpperCase());
             preparaInstrucao.setString(4, u.getLogin());
             preparaInstrucao.setInt(5, u.getSenha());
 
@@ -57,7 +55,7 @@ public class UsuarioDAO {
             // OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
             preparaInstrucao.setString(1, u.getNome().toUpperCase());
             preparaInstrucao.setString(2, u.getEmail().toUpperCase());
-            preparaInstrucao.setString(3, u.getFuncacao().toUpperCase());
+            preparaInstrucao.setString(3, u.getFuncao().toUpperCase());
             preparaInstrucao.setString(4, u.getLogin());
             preparaInstrucao.setInt(5, u.getSenha());
             preparaInstrucao.setInt(6, u.getIdUsuario());
