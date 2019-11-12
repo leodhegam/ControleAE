@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import main.Principal;
 
 /**
  * FXML Controller class
@@ -47,7 +48,7 @@ public class ControladorCadastroUsuario implements Initializable {
 
     @FXML
     void cadastrarUsuario(ActionEvent event) {
-        System.exit(0);
+        Principal.changeScreen("login");
     }
 
     @FXML

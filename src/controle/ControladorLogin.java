@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main.Principal;
 
 /**
  * FXML Controller class
@@ -29,13 +30,16 @@ import javafx.stage.Stage;
 public class ControladorLogin implements Initializable {
 
     @FXML
-    private Button btnLogin;
+    private Label txtLabel;
+
+    @FXML
+    private Pane pane;
 
     @FXML
     private TextField txtUsuario;
 
     @FXML
-    private Label txtLabel;
+    private Button btnLogin;
 
     @FXML
     private TextField txtSenha;
@@ -44,18 +48,13 @@ public class ControladorLogin implements Initializable {
     private Button btnCadastro;
 
     @FXML
-    private Pane pane;
-
-    @FXML
-    public void cadastrar(ActionEvent event) {
-    
+    void cadastrar(ActionEvent event) {
+        Principal.changeScreen("cadastro");
     }
 
-
-
     @FXML
-    public void login(ActionEvent event) {
-        System.out.println("login");
+    void login(ActionEvent event) {
+          Principal.changeScreen("menu");
     }
 
     @Override
