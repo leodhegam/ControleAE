@@ -32,11 +32,11 @@ public class Principal extends Application {
         Parent fxmlCadastro = FXMLLoader.load(getClass().getResource("/visao/CadastroUsuario.fxml"));
         cadastro = new Scene(fxmlCadastro, 640, 400);
 
-        Parent fxmlMenu = FXMLLoader.load(getClass().getResource("/visao/Menu.fxml"));
-        menu = new Scene(fxmlMenu, 640, 400);
-
-        Parent fxmlCadastroAC = FXMLLoader.load(getClass().getResource("/visao/CadastroAC.fxml"));
-        cadastroAC = new Scene(fxmlCadastro, 640, 400);
+//        Parent fxmlMenu = FXMLLoader.load(getClass().getResource("/visao/Menu.fxml"));
+//        menu = new Scene(fxmlMenu, 640, 400);
+//
+//        Parent fxmlCadastroAC = FXMLLoader.load(getClass().getResource("/visao/CadastroAC.fxml"));
+//        cadastroAC = new Scene(fxmlCadastro, 640, 400);
 
         stageP.setScene(login);
         stageP.show();
@@ -50,12 +50,12 @@ public class Principal extends Application {
             case "cadastro":
                 stage.setScene(cadastro);
                 break;
-            case "menu":
-                stage.setScene(menu);
-                break;
-            case "cadastroAC":
-                stage.setScene(cadastroAC);
-                break;
+//            case "menu":
+//                stage.setScene(menu);
+//                break;
+//            case "cadastroAC":
+//                stage.setScene(cadastroAC);
+//                break;
 
         }
     }

@@ -3,7 +3,6 @@ package persistencia;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 import modelo.Usuario;
 
 public class UsuarioDAO {
@@ -19,6 +18,7 @@ public class UsuarioDAO {
         try {
             // CONECTA
             con.conecta();
+
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(INSERTUSUARIO);
 
