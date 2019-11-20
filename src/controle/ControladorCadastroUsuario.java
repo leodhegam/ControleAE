@@ -27,7 +27,6 @@ import persistencia.UsuarioDAO;
  */
 public class ControladorCadastroUsuario implements Initializable {
 
-    private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     @FXML
     private TextField lblNome;
@@ -56,17 +55,9 @@ public class ControladorCadastroUsuario implements Initializable {
     @FXML
     void cadastrarUsuario(ActionEvent event) {
         Usuario u = new Usuario(lblNome.getText(), lblEmail.getText(), lblFuncao.getText(), lblLogin.getText(), Integer.parseInt(lblSenha.getText()));
-        if (!usuarios.contains(u)) {
+       
             usuarioDAO.insertUsuario(u);
-            
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Atenção");
-            alert.setHeaderText("Nome repetido");
-            alert.setContentText("Este nome de usuário já foi cadastrado");
-            alert.showAndWait();
-        }
-        
+          
         Principal.changeScreen("login");
     }
 

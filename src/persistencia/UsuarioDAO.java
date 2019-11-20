@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Usuario;
@@ -9,6 +10,8 @@ public class UsuarioDAO {
 
     private final Conexao con = new Conexao();
     private final String INSERTUSUARIO = "INSERT INTO USUARIO (NOME, EMAIL, FUNCAO, USUARIO, SENHA ) VALUES (?,?,?,?,?)";
+    private final String LOGIN = "SELECT USUARIO FROM USUARIO  WHERE USUARIO =  ? and  SENHA =  ?";
+
     private final String UPDATEUSUARIO = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, FUNCAO = ?, USUARIO = ?, SENHA = ?  WHERE ID_USUARIO = ?";
     private final String DELETEUSUARIO = "DELETE FROM USUARIO WHERE ID_USUARIO = ?";
     private final String LISTUSUARIO = "SELECT * FROM USUARIO";
@@ -27,7 +30,7 @@ public class UsuarioDAO {
             preparaInstrucao.setString(1, u.getNome().toUpperCase());
             preparaInstrucao.setString(2, u.getEmail().toUpperCase());
             preparaInstrucao.setString(3, u.getFuncao().toUpperCase());
-            preparaInstrucao.setString(4, u.getLogin());
+            preparaInstrucao.setString(4, u.getLogin().toUpperCase());
             preparaInstrucao.setInt(5, u.getSenha());
 
             // EXECUTA A INSTRUCAO
@@ -44,58 +47,32 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean updateUsuario(Usuario u) {
+    public boolean login(Usuario u) {
+        boolean resultado = false;
         try {
             // CONECTA
             con.conecta();
+
             PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(UPDATEUSUARIO);
+            preparaInstrucao = con.getConexao().prepareStatement(LOGIN);
 
             // SETA OS VALORES DA INSTRUCAO
             // OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-            preparaInstrucao.setString(1, u.getNome().toUpperCase());
-            preparaInstrucao.setString(2, u.getEmail().toUpperCase());
-            preparaInstrucao.setString(3, u.getFuncao().toUpperCase());
-            preparaInstrucao.setString(4, u.getLogin());
-            preparaInstrucao.setInt(5, u.getSenha());
-            preparaInstrucao.setInt(6, u.getIdUsuario());
+            preparaInstrucao.setString(1, u.getLogin().toUpperCase());
+            preparaInstrucao.setInt(2, u.getSenha());
 
             // EXECUTA A INSTRUCAO
-            preparaInstrucao.execute();
+            ResultSet rs = preparaInstrucao.executeQuery();
+
+            resultado = rs.next();
 
             // DESCONECTA
             con.desconecta();
-
-            return true;
-
         } catch (SQLException e) {
-            return false;
+            System.out.println("erro " + e);
 
         }
+        return resultado;
     }
 
-    public boolean deleteUsuario(int idUsuario) {
-        try {
-            // CONECTA
-            con.conecta();
-            PreparedStatement preparaInstrucao;
-            preparaInstrucao = con.getConexao().prepareStatement(DELETEUSUARIO);
-
-            // SETA OS VALORES DA INSTRUCAO
-            // OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-            preparaInstrucao.setInt(1, idUsuario);
-
-            // EXECUTA A INSTRUCAO
-            preparaInstrucao.execute();
-
-            // DESCONECTA
-            con.desconecta();
-
-            return true;
-
-        } catch (SQLException e) {
-            return false;
-
-        }
-    }
 }

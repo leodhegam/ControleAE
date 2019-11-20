@@ -19,7 +19,8 @@ public class Principal extends Application {
     private static Scene login;
     private static Scene cadastro;
     private static Scene menu;
-    private static Scene cadastroAC;
+    private static Scene arCondicionado;
+    private static Scene extintor;
 
     @Override
     public void start(Stage stageP) throws Exception {
@@ -32,11 +33,14 @@ public class Principal extends Application {
         Parent fxmlCadastro = FXMLLoader.load(getClass().getResource("/visao/CadastroUsuario.fxml"));
         cadastro = new Scene(fxmlCadastro, 640, 400);
 
-//        Parent fxmlMenu = FXMLLoader.load(getClass().getResource("/visao/Menu.fxml"));
-//        menu = new Scene(fxmlMenu, 640, 400);
-//
-//        Parent fxmlCadastroAC = FXMLLoader.load(getClass().getResource("/visao/CadastroAC.fxml"));
-//        cadastroAC = new Scene(fxmlCadastro, 640, 400);
+        Parent fxmlMenu = FXMLLoader.load(getClass().getResource("/visao/Menu.fxml"));
+        menu = new Scene(fxmlMenu, 640, 400);
+
+        Parent fxmlArCondicionado = FXMLLoader.load(getClass().getResource("/visao/ArCondicionado.fxml"));
+        arCondicionado = new Scene(fxmlArCondicionado, 640, 400);
+
+        Parent fxmlExtintor = FXMLLoader.load(getClass().getResource("/visao/Extintor.fxml"));
+        extintor = new Scene(fxmlExtintor, 640, 400);
 
         stageP.setScene(login);
         stageP.show();
@@ -50,12 +54,16 @@ public class Principal extends Application {
             case "cadastro":
                 stage.setScene(cadastro);
                 break;
-//            case "menu":
-//                stage.setScene(menu);
-//                break;
-//            case "cadastroAC":
-//                stage.setScene(cadastroAC);
-//                break;
+            case "menu":
+                stage.setScene(menu);
+                break;
+
+            case "ar":
+                stage.setScene(arCondicionado);
+                break;
+            case "ex":
+                stage.setScene(extintor);
+                break;
 
         }
     }

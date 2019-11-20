@@ -5,22 +5,22 @@
  */
 package controle;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
 import main.Principal;
+import modelo.Usuario;
+import persistencia.UsuarioDAO;
 
 /**
  * FXML Controller class
@@ -28,6 +28,8 @@ import main.Principal;
  * @author Alyson
  */
 public class ControladorLogin implements Initializable {
+
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     @FXML
     private Label txtLabel;
@@ -54,7 +56,16 @@ public class ControladorLogin implements Initializable {
 
     @FXML
     void login(ActionEvent event) {
-       //   Principal.changeScreen("menu");
+        Usuario u = new Usuario(txtUsuario.getText(), Integer.parseInt(txtSenha.getText()));
+
+        if (usuarioDAO.login(u)) {
+            System.out.println("Login ");
+            Principal.changeScreen("menu");
+
+        } else {
+            System.out.println("Erro login");
+        }
+        //Principal.changeScreen("login");
     }
 
     @Override
