@@ -32,6 +32,12 @@ public class Extintor {
         this.idExtintor = idExtintor;
     }
 
+    public Extintor() {
+    }
+
+    
+    
+    
     public Date getValidade() {
         return validade;
     }

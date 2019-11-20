@@ -12,11 +12,7 @@ public class UsuarioDAO {
     private final String INSERTUSUARIO = "INSERT INTO USUARIO (NOME, EMAIL, FUNCAO, USUARIO, SENHA ) VALUES (?,?,?,?,?)";
     private final String LOGIN = "SELECT USUARIO FROM USUARIO  WHERE USUARIO =  ? and  SENHA =  ?";
 
-    private final String UPDATEUSUARIO = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, FUNCAO = ?, USUARIO = ?, SENHA = ?  WHERE ID_USUARIO = ?";
-    private final String DELETEUSUARIO = "DELETE FROM USUARIO WHERE ID_USUARIO = ?";
-    private final String LISTUSUARIO = "SELECT * FROM USUARIO";
-    private final String BUSCARUSUARIO = "SELECT * FROM USUARIO WHERE UPPER(NOME) LIKE ?";
-
+  
     public boolean insertUsuario(Usuario u) {
         try {
             // CONECTA
