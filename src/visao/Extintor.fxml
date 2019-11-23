@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="529.0" prefWidth="852.0" stylesheets="@stylextintor.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControladorEx">
+<AnchorPane id="AnchorPane" prefHeight="529.0" prefWidth="852.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.ControladorEx">
    <children>
       <TableView fx:id="tabela" layoutX="151.0" layoutY="229.0" prefHeight="200.0" prefWidth="550.0" stylesheets="@style.css">
         <columns>
@@ -19,17 +19,17 @@
             <TableColumn fx:id="colunaValidade" prefWidth="119.0" text="VALIDADE" />
         </columns>
       </TableView>
-      <Button fx:id="btnVoltar" layoutX="172.0" layoutY="177.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="149.0" stylesheets="@stylextintor.css" text="VOLTAR" />
-      <Button fx:id="btnCadastro" layoutX="356.0" layoutY="177.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="149.0" stylesheets="@stylextintor.css" text="CADASTRAR" />
-      <Button fx:id="btnBuscar" layoutX="530.0" layoutY="177.0" mnemonicParsing="false" onAction="#buscar" prefHeight="25.0" prefWidth="149.0" stylesheets="@stylextintor.css" text="BUSCAR" />
-      <Label layoutX="332.0" layoutY="83.0" prefHeight="51.0" prefWidth="198.0" stylesheets="@stylextintor.css" text="EXTINTOR">
+      <Button fx:id="btnVoltar" layoutX="172.0" layoutY="177.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="149.0" stylesheets="@style.css" text="VOLTAR" />
+      <Button fx:id="btnCadastro" layoutX="356.0" layoutY="177.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="25.0" prefWidth="149.0" stylesheets="@style.css" text="CADASTRAR" />
+      <Button fx:id="btnBuscar" layoutX="530.0" layoutY="177.0" mnemonicParsing="false" onAction="#buscar" prefHeight="25.0" prefWidth="149.0" stylesheets="@style.css" text="BUSCAR" />
+      <Label layoutX="356.0" layoutY="75.0" prefHeight="51.0" prefWidth="198.0" stylesheets="@stylextintor.css" text="EXTINTORES">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
       <ImageView fitHeight="78.0" fitWidth="76.0" layoutX="259.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../icon/59285.png" />
+            <Image url="@../../../icon/377407.png" />
          </image>
       </ImageView>
    </children>
