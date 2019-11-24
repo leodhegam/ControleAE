@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -46,14 +48,21 @@
                </font>
             </Label>
             <TextField fx:id="lblSenha" layoutX="118.0" layoutY="342.0" stylesheets="@style.css" />
-            <Button fx:id="btnCadastrar" layoutX="261.0" layoutY="386.0" mnemonicParsing="false" onAction="#cadastrarUsuario" stylesheets="@style.css" text="Cadastrar" />
-            <Button fx:id="btnLimpar" layoutX="196.0" layoutY="386.0" mnemonicParsing="false" onAction="#limpar" prefHeight="15.0" prefWidth="54.0" stylesheets="@style.css" text="Limpar" />
+            <Button fx:id="btnCadastrar" layoutX="201.0" layoutY="386.0" mnemonicParsing="false" onAction="#cadastrarUsuario" stylesheets="@style.css" text="Cadastrar" />
+            <Button fx:id="btnLimpar" layoutX="138.0" layoutY="386.0" mnemonicParsing="false" onAction="#limpar" prefHeight="15.0" prefWidth="54.0" stylesheets="@style.css" text="Limpar" />
             <TextField fx:id="lblNome" layoutX="118.0" layoutY="195.0" style="-fx-border-style: none;" stylesheets="@style.css" />
-            <ButtonBar layoutX="-77.0" layoutY="377.0" prefHeight="40.0" prefWidth="200.0">
-              <buttons>
-                <Button mnemonicParsing="false" text="Button" />
-              </buttons>
-            </ButtonBar>
+            <ButtonBar layoutX="-77.0" layoutY="377.0" prefHeight="40.0" prefWidth="200.0" />
+          <Button fx:id="btnVoltar" layoutX="-17.0" layoutY="407.0" mnemonicParsing="false" text="Voltar" />
+            <ImageView fitHeight="109.0" fitWidth="74.0" layoutX="101.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icon/59285.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="120.0" fitWidth="81.0" layoutX="161.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icon/icon-arcondicionado-300x300.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
