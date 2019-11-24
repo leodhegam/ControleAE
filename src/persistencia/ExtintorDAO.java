@@ -53,29 +53,31 @@ public class ExtintorDAO {
         }
     }
 
-    public ArrayList<Extintor> listExtintor() {
-        ArrayList<Extintor> lista = new ArrayList<>();
-        try {
+   public ArrayList<Extintor> listExtintor() {
+		ArrayList<Extintor> lista = new ArrayList<>(); 
+		
+		try {
 			// CONECTA
 			con.conecta();
 			PreparedStatement preparaInstrucao;
 			preparaInstrucao = con.getConexao().prepareStatement(LISTEXTINTOR); 
+			
 			
 			// EXECUTA A INSTRUCAO
 			ResultSet rs = preparaInstrucao.executeQuery(); 
 			
 			//TRATA O RETORNO DA CONSULTA
 			while (rs.next()) { //enquanto houver registro
-				Extintor e = new Extintor();
-                                lista.add(e); 
+				Extintor e = new Extintor(rs.getDate("VALIDADE"),rs.getString("SETOR"), rs.getString("TIPO"), rs.getInt("PESO"), rs.getInt("ID_USUARIO"));
+				lista.add(e); 
 			}
 			// DESCONECTA
 			con.desconecta();
-		} catch (SQLException e) {
+		} catch (SQLException sqle) {
+                    System.out.println(sqle.getMessage());
 		}
 		
-        
-        return lista;
-    }
+		return lista;
+	}
 
 }

@@ -30,7 +30,7 @@ import persistencia.ExtintorDAO;
 /**
  * FXML Controller class
  *
- * @author Aluno
+ * @author Leonardo
  */
 public class ControladorEx implements Initializable {
 private ExtintorDAO extintorDAO = new ExtintorDAO();
@@ -43,9 +43,6 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
 		
         return lista;
     }
-
-
-
     @FXML
     private TableView<Extintor> tabela;
 
@@ -74,8 +71,7 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
     void buscar(ActionEvent event) {
 
 		extintores.clear();
-		Extintor a = tabela.getSelectionModel().getSelectedItem();
-		
+		Extintor e = tabela.getSelectionModel().getSelectedItem();
 		tabela.setItems(extintores);
 		colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaTipo"));
                 colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>(" colunaPeso"));
@@ -97,10 +93,7 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-
-     
-
+       
         colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaTipo"));
         colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>(" colunaPeso"));
         colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaSetor"));

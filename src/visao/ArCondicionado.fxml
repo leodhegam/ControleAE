@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,14 +21,17 @@
             <Image url="@../../../icon/833934_machine_512x512.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tabela" layoutX="76.0" layoutY="141.0" prefHeight="200.0" prefWidth="516.0" stylesheets="@style.css">
+      <TableView fx:id="tabela" layoutX="76.0" layoutY="197.0" prefHeight="200.0" prefWidth="516.0" stylesheets="@style.css">
          <columns>
-            <TableColumn fx:id="colunaTipo" prefWidth="88.0" text="MODELO" />
-            <TableColumn fx:id="colunaPeso" prefWidth="93.0" text="FABRICAÇÃO" />
+            <TableColumn fx:id="colunaModelo" prefWidth="88.0" text="MODELO" />
+            <TableColumn fx:id="colunaFabricacao" prefWidth="93.0" text="FABRICAÇÃO" />
             <TableColumn fx:id="colunaSetor" prefWidth="98.0" text="SETOR" />
             <TableColumn fx:id="colunaValidade" prefWidth="119.0" text="VALIDADE" />
-            <TableColumn fx:id="colunaValidade1" prefWidth="119.0" text="DESPESAS" />
+            <TableColumn fx:id="colunaDespesas" prefWidth="119.0" text="DESPESAS" />
          </columns>
       </TableView>
+      <Button fx:id="lblVoltar" layoutX="151.0" layoutY="151.0" mnemonicParsing="false" text="VOLTAR" />
+      <Button fx:id="lblCadastro" layoutX="282.0" layoutY="151.0" mnemonicParsing="false" text="CADASTRAR" />
+      <Button fx:id="lblBuscar" layoutX="407.0" layoutY="151.0" mnemonicParsing="false" text="BUSCAR" />
    </children>
 </AnchorPane>

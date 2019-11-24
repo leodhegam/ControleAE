@@ -1,23 +1,55 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package visao;
+package controle;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import main.Principal;
+import modelo.ArCondicionado;
+import modelo.Extintor;
+import persistencia.ArCondicionadoDAO;
+import persistencia.ExtintorDAO;
 
+public class CadastroArCondicionadoController {
+  private ArCondicionadoDAO ArCDAO = new ArCondicionadoDAO();
+    @FXML
+    private TextField lblDespesas;
 
-public class CadastroArCondicionadoController implements Initializable {
+    @FXML
+    private TextField lblSetor;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private TextField lblModelo;
+
+    @FXML
+    private DatePicker DateFabricacao;
+
+    @FXML
+    private TextField lblFabricante;
+
+    @FXML
+    private Button BtnSalvar;
+
+    @FXML
+    private Button BtnVoltar;
+ @FXML
+    void salvar(ActionEvent event) {
+        ArCondicionado a = new ArCondicionado(String.valueOf(lblModelo.getText()),lblSetor.getText(),Integer.parseInt(lblDespesas.getText()),1,Date.valueOf(DateFabricacao.getValue()));
+         ArCDAO.insertArC(a);
+        
+        Principal.changeScreen("AR");
+    }
+
+    @FXML
+    void voltar(ActionEvent event) {
+
+        Principal.changeScreen("ex");
+    }
+
+   
+
 }
