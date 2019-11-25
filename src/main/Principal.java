@@ -49,8 +49,7 @@ public class Principal extends Application {
         
        Parent fxmlCadastroArCondicionado = FXMLLoader.load(getClass().getResource("/visao/CadastroArCondicionado.fxml"));
         cadastroArCondicionado = new Scene(fxmlCadastroArCondicionado, 700, 500);
-
-        stageP.setScene(login);
+        stageP.setScene(cadastroArCondicionado);
         stageP.show();
     }
 
