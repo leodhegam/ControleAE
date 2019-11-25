@@ -73,34 +73,37 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
 		extintores.clear();
 		Extintor e = tabela.getSelectionModel().getSelectedItem();
 		tabela.setItems(extintores);
-		colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaTipo"));
-                colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>(" colunaPeso"));
-                colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaSetor"));
-                colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>(" colunaValidade"));
+		colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Tipo"));
+                colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("Peso"));
+                colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Setor"));
+                colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("Validade"));
 		tabela.getSortOrder().add(colunaTipo);
 	
     }
     @FXML
     void cadastrar(ActionEvent event) {
         Principal.changeScreen("CE");
+        refreshTabela();
+        
     }
 
     @FXML
     void voltar(ActionEvent event) {
         Principal.changeScreen("menu");
+      
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("colunaTipo"));
-        colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("colunaPeso"));
-        colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("colunaSetor"));
-        colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("colunaValidade"));
-        refreshTabela();
+        colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Tipo"));
+        colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("Peso"));
+        colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Setor"));
+        colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("Validade"));
+ 
         extintores.addAll(extintorDAO.listExtintor());
        tabela.setItems(FXCollections.observableArrayList(extintores));
-       
+       refreshTabela();
         FilteredList<Extintor> filteredData = new FilteredList<>(extintores, p -> true);
 
         colunaTipo.textProperty().addListener((observable, oldValue, newValue) -> {

@@ -30,6 +30,8 @@ public class ArCondicionado {
         this.fabricante = fabricante;
     }
 
+   
+
     public ArCondicionado(String modelo, String setor, int despesas, Date datafabricacao) {
         this.modelo = modelo;
         this.setor = setor;
@@ -37,12 +39,13 @@ public class ArCondicionado {
         this.datafabricacao = datafabricacao;
     }
 
-    public ArCondicionado(String modelo, String setor, int despesas, int idArCondicionado, Date datafabricacao) {
+    public ArCondicionado(String modelo, String setor, int despesas, int idArCondicionado,String fabricante, Date datafabricacao) {
         this.modelo = modelo;
         this.setor = setor;
         this.despesas = despesas;
         this.idArCondicionado = idArCondicionado;
         this.datafabricacao = datafabricacao;
+        this.fabricante = fabricante;
     }
 
     public String getModelo() {

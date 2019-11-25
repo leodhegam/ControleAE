@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.ArCondicionado;
-import modelo.Extintor;
 
 /**
  *
@@ -15,9 +14,9 @@ import modelo.Extintor;
 public class ArCondicionadoDAO {
       private final Conexao con = new Conexao();
 
-    private final String INSERTARC = "INSERT INTO ARCONDICIONADO (FABRICANTE,DATAFABRICACAO,DESPESAS,MODELO,SETOR, ID_USUARIO) VALUES (?, ?, ?, ?, ?,?)";
+    private final String INSERTARC = "INSERT INTO ARCONDICIONADO (MODELO,SETOR,DESPESAS,FABRICANTE,DATAFABRICACAO, ID_USUARIO) VALUES (? , ? , ? , ? , ? , ?)";
         private final String LISTARC = "SELECT * FROM ARCONDICIONADO";
-       
+        
     public boolean insertArC(ArCondicionado a) {
         try {
             // CONECTA
@@ -25,15 +24,18 @@ public class ArCondicionadoDAO {
 
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(INSERTARC);
-//(FABRICANTE,DATAFABRICACAO,DESPESAS,MODELO,SETOR, ID_USUARIO) VALUES (?, ?, ?, ?, ?,?)";
+            //(MODELO,SETOR,DESPESAS,FABRICANTE,DATAFABRICACAO, ID_USUARIO)
             // SETA OS VALORES DA INSTRUCAO
             // OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
-            preparaInstrucao.setString(1,a.getFabricante().toUpperCase());
-            preparaInstrucao.setDate(2,a.getDatafabricacao());
+            
+            
+           
+            preparaInstrucao.setString(1, a.getModelo().toUpperCase());
+            preparaInstrucao.setString(2, a.getSetor().toUpperCase());
             preparaInstrucao.setInt(3, a.getDespesas());
-            preparaInstrucao.setString(4, a.getModelo().toUpperCase());
-            preparaInstrucao.setString(5,a.getSetor().toUpperCase());
-            preparaInstrucao.setInt(5, 1);
+            preparaInstrucao.setString(4, a.getFabricante());
+            preparaInstrucao.setDate(5, a.getDatafabricacao());
+            preparaInstrucao.setInt(6, 1);
 
             // EXECUTA A INSTRUCAO
             preparaInstrucao.execute();
@@ -44,6 +46,7 @@ public class ArCondicionadoDAO {
             return true;
 
         } catch (SQLException erro) {
+            System.out.println(erro);
             return false;
 
         }
@@ -51,7 +54,6 @@ public class ArCondicionadoDAO {
 
    public ArrayList<ArCondicionado> listArC() {
 		ArrayList<ArCondicionado> lista = new ArrayList<>(); 
-		
 		try {
 			// CONECTA
 			con.conecta();
@@ -64,7 +66,8 @@ public class ArCondicionadoDAO {
 			
 			//TRATA O RETORNO DA CONSULTA
 			while (rs.next()) { //enquanto houver registro
-				ArCondicionado a = new ArCondicionado(rs.getString("MODELO"),rs.getString("SETOR"),rs.getInt("DESPESAS"),rs.getInt("ID_ARCONDICIONADO"),rs.getDate("DATAFABRICACAO"));
+                            ArCondicionado a = new ArCondicionado(rs.getString("MODELO"),rs.getString("SETOR"),rs.getInt("DESPESAS"),rs.getInt(0),rs.getString("FABRICANTE"),rs.getDate("DATAFABRICACAO"));
+				
                         	lista.add(a); 
 			}
 			// DESCONECTA

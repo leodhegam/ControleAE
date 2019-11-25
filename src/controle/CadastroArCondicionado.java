@@ -15,7 +15,7 @@ import persistencia.ArCondicionadoDAO;
 import persistencia.ExtintorDAO;
 
 public class CadastroArCondicionado {
-  private ArCondicionadoDAO ArCDAO = new ArCondicionadoDAO();
+  private ArCondicionadoDAO ArCondicionadoDAO = new ArCondicionadoDAO();
     @FXML
     private TextField lblDespesas;
 
@@ -38,8 +38,10 @@ public class CadastroArCondicionado {
     private Button BtnVoltar;
  @FXML
     void salvar(ActionEvent event) {
-        ArCondicionado a = new ArCondicionado(String.valueOf(lblModelo.getText()),lblSetor.getText(),Integer.parseInt(lblDespesas.getText()),1,Date.valueOf(DateFabricacao.getValue()));
-         ArCDAO.insertArC(a);
+        ArCondicionado a = new ArCondicionado(String.valueOf(lblModelo.getText()),lblSetor.getText(),Integer.parseInt(lblDespesas.getText()),1,lblFabricante.getText(),Date.valueOf(DateFabricacao.getValue()));
+        ArCondicionadoDAO.insertArC(a);
+           
+     
         Principal.changeScreen("ar");
     }
          @FXML
@@ -50,9 +52,9 @@ public class CadastroArCondicionado {
     @FXML
     void cadastrar(ActionEvent event) {
         Principal.changeScreen("CAR");
+      
     }
-    
-
+   
     @FXML
     void voltar(ActionEvent event) {
         Principal.changeScreen("ar");

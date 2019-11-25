@@ -71,11 +71,11 @@ public class ControladorAc implements Initializable {
 		arCondicionado.clear();
 		ArCondicionado a = (ArCondicionado) tabela.getSelectionModel().getSelectedItem();
 		tabela.setItems(arCondicionado);
-		colunaModelo.setCellValueFactory(new PropertyValueFactory<>(" colunaModelo"));
-                colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>(" colunaFabricacao"));
-                colunaSetor.setCellValueFactory(new PropertyValueFactory<>(" colunaSetor"));
-                colunaValidade.setCellValueFactory(new PropertyValueFactory<>(" colunaValidade"));
-                colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("colunaDespesas"));
+		colunaModelo.setCellValueFactory(new PropertyValueFactory<>(" Modelo"));
+                colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>("Fabricacao"));
+                colunaSetor.setCellValueFactory(new PropertyValueFactory<>("Setor"));
+                colunaValidade.setCellValueFactory(new PropertyValueFactory<>("Validade"));
+                colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("Despesas"));
 		tabela.getSortOrder().add(colunaModelo);
 	
     }
@@ -92,7 +92,6 @@ public class ControladorAc implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
                 colunaModelo.setCellValueFactory(new PropertyValueFactory<>("colunaModelo"));
                 colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>("colunaFabricacao"));
                 colunaSetor.setCellValueFactory(new PropertyValueFactory<>("colunaSetor"));
@@ -100,7 +99,6 @@ public class ControladorAc implements Initializable {
                 colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("colunaDespesas"));
 		tabela.getSortOrder().add(colunaModelo);
                 refreshTabela();
-        
                 arCondicionado.addAll(arCDAO.listArC());
                tabela.setItems(FXCollections.observableArrayList(arCondicionado));
        

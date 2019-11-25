@@ -53,16 +53,19 @@ public class ControladorCE implements Initializable {
         Extintor e = new Extintor(Date.valueOf(lblValidade.getValue()), lblSetor.getText(), lblTipo.getText(), Integer.parseInt(lblPeso.getText()), 1);
         extintorDao.insertExtintor(e);
         Principal.changeScreen("ex");
+      
     }
 
     @FXML
     void voltar(ActionEvent event) {
         Principal.changeScreen("ex");
     }
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
+   
 }
