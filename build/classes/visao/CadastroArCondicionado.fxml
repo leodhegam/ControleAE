@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="visao.CadastroArCondicionadoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadastroArCondicionado">
    <children>
       <Label layoutX="191.0" layoutY="53.0" text="CADASTRO DE AR-CONDICIONADO" />
       <TextField fx:id="lblDespesas" layoutX="226.0" layoutY="182.0" />
@@ -21,11 +21,11 @@
       <DatePicker fx:id="DateFabricacao" layoutX="221.0" layoutY="251.0" prefHeight="25.0" prefWidth="160.0" />
       <TextField fx:id="lblFabricante" layoutX="226.0" layoutY="218.0" />
       <Label layoutX="139.0" layoutY="221.0" text="FABRICANTE" />
-      <Button fx:id="BtnSalvar" layoutX="309.0" layoutY="302.0" mnemonicParsing="false" text="SALVAR" />
-      <Button fx:id="BtnVoltar" layoutX="226.0" layoutY="302.0" mnemonicParsing="false" text="VOLTAR" />
+      <Button fx:id="BtnSalvar" layoutX="309.0" layoutY="302.0" mnemonicParsing="false" onAction="#salvar" text="SALVAR" />
+      <Button fx:id="BtnVoltar" layoutX="226.0" layoutY="302.0" mnemonicParsing="false" onAction="#voltar" text="VOLTAR" />
       <ImageView fitHeight="98.0" fitWidth="102.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../icon/833934_machine_512x512.png" />
+            <Image url="@icon/833934_machine_512x512.png" />
          </image>
       </ImageView>
    </children>

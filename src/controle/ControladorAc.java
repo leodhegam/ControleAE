@@ -62,6 +62,9 @@ public class ControladorAc implements Initializable {
 
     @FXML
     private Button lblBuscar;
+
+    
+  
 @FXML
     void buscar(ActionEvent event) {
 
@@ -90,16 +93,16 @@ public class ControladorAc implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        colunaModelo.setCellValueFactory(new PropertyValueFactory<>("colunaModelo"));
+                colunaModelo.setCellValueFactory(new PropertyValueFactory<>("colunaModelo"));
                 colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>("colunaFabricacao"));
                 colunaSetor.setCellValueFactory(new PropertyValueFactory<>("colunaSetor"));
                 colunaValidade.setCellValueFactory(new PropertyValueFactory<>("colunaValidade"));
                 colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("colunaDespesas"));
 		tabela.getSortOrder().add(colunaModelo);
-        refreshTabela();
+                refreshTabela();
         
-        arCondicionado.addAll(arCDAO.listArC());
-       tabela.setItems(FXCollections.observableArrayList(arCondicionado));
+                arCondicionado.addAll(arCDAO.listArC());
+               tabela.setItems(FXCollections.observableArrayList(arCondicionado));
        
         FilteredList<ArCondicionado> filteredData = new FilteredList<>(arCondicionado, p -> true);
 

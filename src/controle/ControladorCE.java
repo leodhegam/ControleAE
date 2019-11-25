@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.Principal;
 import modelo.Extintor;
@@ -44,19 +45,18 @@ public class ControladorCE implements Initializable {
 
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Label lblCadastro;
 
     @FXML
     void salvar(ActionEvent event) {
         Extintor e = new Extintor(Date.valueOf(lblValidade.getValue()), lblSetor.getText(), lblTipo.getText(), Integer.parseInt(lblPeso.getText()), 1);
-
         extintorDao.insertExtintor(e);
-        
         Principal.changeScreen("ex");
     }
 
     @FXML
     void voltar(ActionEvent event) {
-
         Principal.changeScreen("ex");
     }
 

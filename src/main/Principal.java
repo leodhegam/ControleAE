@@ -30,16 +30,16 @@ public class Principal extends Application {
         stageP.setTitle("Login");
 
         Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/visao/Login.fxml"));
-        login = new Scene(fxmlLogin, 640, 400);
+        login = new Scene(fxmlLogin, 793, 571);
 
         Parent fxmlCadastro = FXMLLoader.load(getClass().getResource("/visao/CadastroUsuario.fxml"));
-        cadastro = new Scene(fxmlCadastro, 640, 400);
+        cadastro = new Scene(fxmlCadastro, 427, 571);
 
         Parent fxmlMenu = FXMLLoader.load(getClass().getResource("/visao/Menu.fxml"));
         menu = new Scene(fxmlMenu, 640, 400);
 
         Parent fxmlArCondicionado = FXMLLoader.load(getClass().getResource("/visao/ArCondicionado.fxml"));
-        arCondicionado = new Scene(fxmlArCondicionado, 640, 400);
+       arCondicionado = new Scene(fxmlArCondicionado, 640, 400);
 
         Parent fxmlExtintor = FXMLLoader.load(getClass().getResource("/visao/Extintor.fxml"));
         extintor = new Scene(fxmlExtintor, 640, 400);
@@ -48,8 +48,8 @@ public class Principal extends Application {
         cadastroExtintor = new Scene(fxmlCadastroExtintor, 700, 500);
         
        Parent fxmlCadastroArCondicionado = FXMLLoader.load(getClass().getResource("/visao/CadastroArCondicionado.fxml"));
-        cadastroArCondicionado = new Scene(fxmlCadastroArCondicionado, 700, 500);
-        stageP.setScene(cadastroArCondicionado);
+       cadastroArCondicionado = new Scene(fxmlCadastroArCondicionado, 700, 500);
+        stageP.setScene(login);
         stageP.show();
     }
 
@@ -73,6 +73,7 @@ public class Principal extends Application {
                 break;
             case "CE":
                 stage.setScene(cadastroExtintor);
+                break;
             case "CAR":
                 stage.setScene(cadastroArCondicionado);
                 break;

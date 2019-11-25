@@ -18,7 +18,7 @@
       </Label>
       <ImageView fitHeight="113.0" fitWidth="86.0" layoutX="76.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../icon/833934_machine_512x512.png" />
+            <Image url="@icon/833934_machine_512x512.png" />
          </image>
       </ImageView>
       <TableView fx:id="tabela" layoutX="76.0" layoutY="197.0" prefHeight="200.0" prefWidth="516.0" stylesheets="@style.css">
@@ -30,8 +30,8 @@
             <TableColumn fx:id="colunaDespesas" prefWidth="119.0" text="DESPESAS" />
          </columns>
       </TableView>
-      <Button fx:id="lblVoltar" layoutX="151.0" layoutY="151.0" mnemonicParsing="false" text="VOLTAR" />
-      <Button fx:id="lblCadastro" layoutX="282.0" layoutY="151.0" mnemonicParsing="false" text="CADASTRAR" />
-      <Button fx:id="lblBuscar" layoutX="407.0" layoutY="151.0" mnemonicParsing="false" text="BUSCAR" />
+      <Button fx:id="lblVoltar" layoutX="151.0" layoutY="151.0" mnemonicParsing="false" onAction="#voltar" text="VOLTAR" />
+      <Button fx:id="lblCadastro" layoutX="282.0" layoutY="151.0" mnemonicParsing="false" onAction="#cadastrar" text="CADASTRAR" />
+      <Button fx:id="lblBuscar" layoutX="407.0" layoutY="151.0" mnemonicParsing="false" onAction="#buscar" text="BUSCAR" />
    </children>
 </AnchorPane>

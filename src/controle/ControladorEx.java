@@ -80,7 +80,6 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
 		tabela.getSortOrder().add(colunaTipo);
 	
     }
-
     @FXML
     void cadastrar(ActionEvent event) {
         Principal.changeScreen("CE");
@@ -94,10 +93,10 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaTipo"));
-        colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>(" colunaPeso"));
-        colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>(" colunaSetor"));
-        colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>(" colunaValidade"));
+        colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("colunaTipo"));
+        colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("colunaPeso"));
+        colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("colunaSetor"));
+        colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("colunaValidade"));
         refreshTabela();
         extintores.addAll(extintorDAO.listExtintor());
        tabela.setItems(FXCollections.observableArrayList(extintores));
@@ -115,7 +114,7 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
                     return true;
                 }
 
-                return false;
+                return false;       
             });
 
             tabela.setItems(filteredData);

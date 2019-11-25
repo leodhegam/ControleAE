@@ -61,11 +61,8 @@ public class ExtintorDAO {
 			con.conecta();
 			PreparedStatement preparaInstrucao;
 			preparaInstrucao = con.getConexao().prepareStatement(LISTEXTINTOR); 
-			
-			
 			// EXECUTA A INSTRUCAO
 			ResultSet rs = preparaInstrucao.executeQuery(); 
-			
 			//TRATA O RETORNO DA CONSULTA
 			while (rs.next()) { //enquanto houver registro
 				Extintor e = new Extintor(rs.getDate("VALIDADE"),rs.getString("SETOR"), rs.getString("TIPO"), rs.getInt("PESO"), rs.getInt("ID_USUARIO"));
