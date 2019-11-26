@@ -37,7 +37,7 @@ public class ExtintorDAO {
             preparaInstrucao.setInt(2, e.getPeso());
             preparaInstrucao.setDate(3, e.getValidade());
             preparaInstrucao.setString(4, e.getSetor().toUpperCase());
-            preparaInstrucao.setInt(5, 1);
+            preparaInstrucao.setInt(5,  DataSingleton.getInstance().getUser());
 
             // EXECUTA A INSTRUCAO
             preparaInstrucao.execute();

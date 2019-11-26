@@ -15,7 +15,7 @@ public class ArCondicionadoDAO {
       private final Conexao con = new Conexao();
 
     private final String INSERTARC = "INSERT INTO ARCONDICIONADO (MODELO,SETOR,DESPESAS,FABRICANTE,DATAFABRICACAO, ID_USUARIO) VALUES (? , ? , ? , ? , ? , ?)";
-        private final String LISTARC = "SELECT * FROM ARCONDICIONADO";
+        private final String LISTARC = "SELECT MODELO,SETOR,DESPESAS,FABRICANTE,DATAFABRICACAO, ID_USUARIO FROM ARCONDICIONADO";
         
     public boolean insertArC(ArCondicionado a) {
         try {
@@ -35,7 +35,7 @@ public class ArCondicionadoDAO {
             preparaInstrucao.setInt(3, a.getDespesas());
             preparaInstrucao.setString(4, a.getFabricante());
             preparaInstrucao.setDate(5, a.getDatafabricacao());
-            preparaInstrucao.setInt(6, 1);
+            preparaInstrucao.setInt(6, DataSingleton.getInstance().getUser());
 
             // EXECUTA A INSTRUCAO
             preparaInstrucao.execute();
@@ -66,7 +66,7 @@ public class ArCondicionadoDAO {
 			
 			//TRATA O RETORNO DA CONSULTA
 			while (rs.next()) { //enquanto houver registro
-                            ArCondicionado a = new ArCondicionado(rs.getString("MODELO"),rs.getString("SETOR"),rs.getInt("DESPESAS"),rs.getInt(0),rs.getString("FABRICANTE"),rs.getDate("DATAFABRICACAO"));
+                            ArCondicionado a = new ArCondicionado(rs.getString("MODELO"),rs.getString("SETOR"),rs.getInt("DESPESAS"),rs.getString("FABRICANTE"),rs.getDate("DATAFABRICACAO"));
 				
                         	lista.add(a); 
 			}

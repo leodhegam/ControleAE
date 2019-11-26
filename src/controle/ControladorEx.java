@@ -19,8 +19,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.Principal;
 import modelo.Extintor;
@@ -33,6 +36,8 @@ import persistencia.ExtintorDAO;
  * @author Leonardo
  */
 public class ControladorEx implements Initializable {
+        
+
 private ExtintorDAO extintorDAO = new ExtintorDAO();
     private Extintor extintorEdit = new Extintor();
 
@@ -67,22 +72,29 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
     @FXML
     private Button btnBuscar;
 
-    @FXML
-    void buscar(ActionEvent event) {
 
-		extintores.clear();
-		Extintor e = tabela.getSelectionModel().getSelectedItem();
-		tabela.setItems(extintores);
-		colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Tipo"));
-                colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("Peso"));
-                colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Setor"));
-                colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("Validade"));
-		tabela.getSortOrder().add(colunaTipo);
-	
-    }
+    @FXML
+    private Label lblCadastro;
+
+    @FXML
+    private TextField lblTipo;
+
+    @FXML
+    private TextField lblPeso;
+
+    @FXML
+    private TextField lblSetor;
+
+    @FXML
+    private DatePicker lblValidade;
+
+ 
+
     @FXML
     void cadastrar(ActionEvent event) {
-        Principal.changeScreen("CE");
+        Extintor e = new Extintor(Date.valueOf(lblValidade.getValue()), lblSetor.getText(), lblTipo.getText(), Integer.parseInt(lblPeso.getText()), 1);
+        extintorDAO.insertExtintor(e);
+        limpar();
         refreshTabela();
         
     }
@@ -95,15 +107,14 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        
+        
         colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Tipo"));
         colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("Peso"));
         colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Setor"));
         colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("Validade"));
- 
-        extintores.addAll(extintorDAO.listExtintor());
-       tabela.setItems(FXCollections.observableArrayList(extintores));
-       refreshTabela();
+        
+        refreshTabela();
         FilteredList<Extintor> filteredData = new FilteredList<>(extintores, p -> true);
 
         colunaTipo.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -129,15 +140,22 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
             colunaPeso.setText(String.valueOf(extintorEdit.getPeso()));
             colunaPeso.setText(extintorEdit.getSetor());
             colunaValidade.setText(String.valueOf(extintorEdit.getValidade()));
-
+            lblTipo.setText(extintorEdit.getTipo());
+            //TODO setar valor no textField
         });
-
+ 
     }
 
-    private void refreshTabela() {
+     private void refreshTabela() {
         extintores.clear();
         extintores.addAll(extintorDAO.listExtintor());
         tabela.setItems(extintores);
     }
-
+ void limpar ()
+    {
+        lblTipo.clear();
+        lblPeso.clear();
+        lblSetor.clear();
+       
+    }
 }

@@ -50,7 +50,7 @@
             <Button fx:id="btnLimpar" layoutX="160.0" layoutY="325.0" mnemonicParsing="false" onAction="#limpar" prefHeight="25.0" prefWidth="68.0" stylesheets="@style.css" text="LIMPAR" />
             <TextField fx:id="lblNome" layoutX="203.0" layoutY="116.0" stylesheets="@style.css" />
             <ButtonBar layoutX="-77.0" layoutY="377.0" prefHeight="40.0" prefWidth="200.0" />
-          <Button fx:id="btnVoltar" layoutX="23.0" layoutY="348.0" mnemonicParsing="false" text="VOLTAR" />
+          <Button fx:id="btnVoltar" layoutX="23.0" layoutY="348.0" mnemonicParsing="false" onAction="#voltar" text="VOLTAR" />
          </children>
       </Pane>
    </children>

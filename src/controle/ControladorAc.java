@@ -1,4 +1,3 @@
-
 package controle;
 
 import java.net.URL;
@@ -12,30 +11,33 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.Principal;
 import modelo.ArCondicionado;
 import persistencia.ArCondicionadoDAO;
 import persistencia.ExtintorDAO;
+
 /**
  * FXML Controller class
  *
  * @author Leonardo
  */
 
-
 public class ControladorAc implements Initializable {
- private ArCondicionadoDAO arCDAO = new ArCondicionadoDAO();
+
+    private ArCondicionadoDAO arCondicionadoDAO = new ArCondicionadoDAO();
     private ArCondicionado arCEdit = new ArCondicionado();
     private ObservableList<ArCondicionado> arCondicionado = FXCollections.observableArrayList();
-    
+
     public ArrayList<ArCondicionado> listArCondicionado() {
         ArrayList<ArCondicionado> lista = new ArrayList<>();
-		
+
         return lista;
-        }
+    }
     @FXML
     private TableView<ArCondicionado> tabela;
 
@@ -61,28 +63,26 @@ public class ControladorAc implements Initializable {
     private Button lblCadastro;
 
     @FXML
-    private Button lblBuscar;
+    private TextField lblDespesas;
 
-    
-  
-@FXML
-    void buscar(ActionEvent event) {
+    @FXML
+    private TextField lblSetor;
 
-		arCondicionado.clear();
-		ArCondicionado a = (ArCondicionado) tabela.getSelectionModel().getSelectedItem();
-		tabela.setItems(arCondicionado);
-		colunaModelo.setCellValueFactory(new PropertyValueFactory<>(" Modelo"));
-                colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>("Fabricacao"));
-                colunaSetor.setCellValueFactory(new PropertyValueFactory<>("Setor"));
-                colunaValidade.setCellValueFactory(new PropertyValueFactory<>("Validade"));
-                colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("Despesas"));
-		tabela.getSortOrder().add(colunaModelo);
-	
-    }
+    @FXML
+    private TextField lblModelo;
+
+    @FXML
+    private DatePicker DateFabricacao;
+
+    @FXML
+    private TextField lblFabricante;
 
     @FXML
     void cadastrar(ActionEvent event) {
-        Principal.changeScreen("CAR");
+         ArCondicionado a = new ArCondicionado(String.valueOf(lblModelo.getText()),lblSetor.getText(),Integer.parseInt(lblDespesas.getText()),lblFabricante.getText(),Date.valueOf(DateFabricacao.getValue()));
+        arCondicionadoDAO.insertArC(a);
+        limpar();
+        refreshTabela();
     }
 
     @FXML
@@ -92,16 +92,17 @@ public class ControladorAc implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                colunaModelo.setCellValueFactory(new PropertyValueFactory<>("colunaModelo"));
-                colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>("colunaFabricacao"));
-                colunaSetor.setCellValueFactory(new PropertyValueFactory<>("colunaSetor"));
-                colunaValidade.setCellValueFactory(new PropertyValueFactory<>("colunaValidade"));
-                colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("colunaDespesas"));
-		tabela.getSortOrder().add(colunaModelo);
-                refreshTabela();
-                arCondicionado.addAll(arCDAO.listArC());
-               tabela.setItems(FXCollections.observableArrayList(arCondicionado));
-       
+        colunaModelo.setCellValueFactory(new PropertyValueFactory<>("Modelo"));
+        colunaFabricacao.setCellValueFactory(new PropertyValueFactory<>("Fabricacao"));
+        colunaSetor.setCellValueFactory(new PropertyValueFactory<>("Setor"));
+        colunaValidade.setCellValueFactory(new PropertyValueFactory<>("Validade"));
+        colunaDespesas.setCellValueFactory(new PropertyValueFactory<>("Despesas"));
+
+      
+        refreshTabela();
+
+        tabela.setItems(FXCollections.observableArrayList(arCondicionado));
+
         FilteredList<ArCondicionado> filteredData = new FilteredList<>(arCondicionado, p -> true);
 
         colunaModelo.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -130,7 +131,7 @@ public class ControladorAc implements Initializable {
 
     private void refreshTabela() {
         arCondicionado.clear();
-        arCondicionado.addAll(arCDAO.listArC());
+        arCondicionado.addAll(arCondicionadoDAO.listArC());
         tabela.setItems(arCondicionado);
     }
     /*
@@ -138,10 +139,15 @@ public class ControladorAc implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     TODO
-    }*/ 
-
+    }*/
     
+    
+     void limpar ()
+    {
+      
+        lblDespesas.clear();
+        lblSetor.clear();
+       
+    }
 
 }
-
-    

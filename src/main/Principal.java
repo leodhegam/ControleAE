@@ -30,25 +30,20 @@ public class Principal extends Application {
         stageP.setTitle("Login");
 
         Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/visao/Login.fxml"));
-        login = new Scene(fxmlLogin, 793, 571);
+        login = new Scene(fxmlLogin, 852, 529);
 
         Parent fxmlCadastro = FXMLLoader.load(getClass().getResource("/visao/CadastroUsuario.fxml"));
-        cadastro = new Scene(fxmlCadastro, 427, 571);
+        cadastro = new Scene(fxmlCadastro, 852, 529);
 
         Parent fxmlMenu = FXMLLoader.load(getClass().getResource("/visao/Menu.fxml"));
-        menu = new Scene(fxmlMenu, 640, 400);
+        menu = new Scene(fxmlMenu, 852, 529);
 
         Parent fxmlArCondicionado = FXMLLoader.load(getClass().getResource("/visao/ArCondicionado.fxml"));
-       arCondicionado = new Scene(fxmlArCondicionado, 640, 400);
+       arCondicionado = new Scene(fxmlArCondicionado, 852, 529);
 
         Parent fxmlExtintor = FXMLLoader.load(getClass().getResource("/visao/Extintor.fxml"));
-        extintor = new Scene(fxmlExtintor, 640, 400);
-
-        Parent fxmlCadastroExtintor = FXMLLoader.load(getClass().getResource("/visao/CadastroExtintor.fxml"));
-        cadastroExtintor = new Scene(fxmlCadastroExtintor, 700, 500);
-        
-       Parent fxmlCadastroArCondicionado = FXMLLoader.load(getClass().getResource("/visao/CadastroArCondicionado.fxml"));
-       cadastroArCondicionado = new Scene(fxmlCadastroArCondicionado, 700, 500);
+        extintor = new Scene(fxmlExtintor, 852, 529);
+    
         stageP.setScene(login);
         stageP.show();
     }
@@ -69,15 +64,9 @@ public class Principal extends Application {
                 stage.setScene(arCondicionado);
                 break;
             case "ex":
-                stage.setScene(extintor);
+               stage.setScene(extintor);
                 break;
-            case "CE":
-                stage.setScene(cadastroExtintor);
-                break;
-            case "CAR":
-                stage.setScene(cadastroArCondicionado);
-                break;
-
+            
         }
     }
 
