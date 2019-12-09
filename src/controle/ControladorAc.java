@@ -125,6 +125,10 @@ public class ControladorAc implements Initializable {
             colunaFabricacao.setText(String.valueOf(arCEdit.getDatafabricacao()));
             colunaSetor.setText(arCEdit.getSetor());
             colunaDespesas.setText(String.valueOf(arCEdit.getDespesas()));
+            lblModelo.setText(arCEdit.getModelo());
+            lblSetor.setText(arCEdit.getSetor());
+            lblDespesas.setText(String.valueOf(arCEdit.getDespesas()));
+            
         });
 
     }

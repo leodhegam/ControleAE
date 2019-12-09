@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,7 +25,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import main.Principal;
 import modelo.Extintor;
 import modelo.Usuario;
@@ -108,12 +111,11 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
         colunaTipo.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Tipo"));
         colunaPeso.setCellValueFactory(new PropertyValueFactory<Extintor, Float>("Peso"));
         colunaSetor.setCellValueFactory(new PropertyValueFactory<Extintor, String>("Setor"));
         colunaValidade.setCellValueFactory(new PropertyValueFactory<Extintor, Date>("Validade"));
-        
+       
         refreshTabela();
         FilteredList<Extintor> filteredData = new FilteredList<>(extintores, p -> true);
 
@@ -138,9 +140,13 @@ private ExtintorDAO extintorDAO = new ExtintorDAO();
             extintorEdit = tabela.getSelectionModel().getSelectedItem();
             colunaTipo.setText(extintorEdit.getTipo());
             colunaPeso.setText(String.valueOf(extintorEdit.getPeso()));
+            
+        
             colunaPeso.setText(extintorEdit.getSetor());
             colunaValidade.setText(String.valueOf(extintorEdit.getValidade()));
             lblTipo.setText(extintorEdit.getTipo());
+            lblPeso.setText(String.valueOf(extintorEdit.getPeso()));
+           lblSetor.setText(extintorEdit.getSetor());
             //TODO setar valor no textField
         });
  
